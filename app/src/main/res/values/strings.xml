@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Nice Device</string>
     <string name="fullproperties">Full Properties</string>
+
+    <string name="title_activity_properties">properties</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

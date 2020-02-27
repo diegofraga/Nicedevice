@@ -6,4 +6,6 @@
     <color name="colorwrite">#FFFFFF</color>
     <color name="colorAccentDark">#005cb2</color>
     <color name="colorAccentLight">#94DD35</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

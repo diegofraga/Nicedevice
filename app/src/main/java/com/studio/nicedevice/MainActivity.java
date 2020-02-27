@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(getApplicationContext(), );
+                Intent intent = new Intent(getApplicationContext(),Properties.class);
 
                 startActivity(intent);
                 finish();
