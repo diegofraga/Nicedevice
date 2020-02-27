@@ -1,13 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="#FFFFFF"
     tools:context=".Properties">
 
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+
     <TextView
-        android:id="@+id/textviewproperties"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</FrameLayout>
+        android:id="@+id/titlename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Project Name"
+        android:textAllCaps="false"
+        android:textColor="#0C0B0B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textviewname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/titlename"
+        tools:text="textviewname" />
+
+
+    <TextView
+        android:id="@+id/titlebrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Brand Name"
+        android:textAllCaps="false"
+        android:textColor="#0C0B0B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textviewname"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textviewbrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textviewname"
+        app:layout_constraintTop_toBottomOf="@+id/titlebrand"
+        tools:text="textviewbrand" />
+
+    <TextView
+        android:id="@+id/titleparameters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Parameters"
+        android:textAllCaps="false"
+        android:textColor="#0C0B0B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textviewbrand"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewparameters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textviewbrand"
+        app:layout_constraintTop_toBottomOf="@+id/titleparameters"
+        tools:text="textViewparameters" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
