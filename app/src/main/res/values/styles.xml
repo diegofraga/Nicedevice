@@ -24,6 +24,19 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+    <style name="CustomTextbody" parent="@style/TextAppearance.AppCompat.Display1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CustomTextTitle" parent="@style/TextAppearance.AppCompat.Display1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#0C0B0B</item>
+    </style>
+
 
 
 </resources>

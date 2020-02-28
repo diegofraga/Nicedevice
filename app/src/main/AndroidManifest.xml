@@ -11,7 +11,7 @@
         android:textAllCaps="false"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Properties"
+            android:name=".PropertiesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_properties"
             android:theme="@style/FullscreenTheme"></activity>

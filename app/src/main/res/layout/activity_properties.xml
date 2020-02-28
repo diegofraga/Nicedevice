@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Properties">
+    tools:context=".PropertiesActivity">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -29,10 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Project Name"
-        android:textAllCaps="false"
-        android:textColor="#0C0B0B"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        style="@style/CustomTextTitle"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,13 +38,11 @@
         android:id="@+id/textviewname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/CustomTextbody"
         android:scrollbars="vertical"
-        android:textAllCaps="false"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/titlename"
         tools:text="textviewname" />
-
 
     <TextView
         android:id="@+id/titlebrand"
@@ -67,8 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:textAllCaps="false"
-        android:textStyle="bold"
+        style="@style/CustomTextbody"
         app:layout_constraintStart_toEndOf="@+id/textviewname"
         app:layout_constraintTop_toBottomOf="@+id/titlebrand"
         tools:text="textviewbrand" />
@@ -77,23 +71,21 @@
         android:id="@+id/titleparameters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Parameters"
         android:textAllCaps="false"
         android:textColor="#0C0B0B"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textviewbrand"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textviewname" />
 
     <TextView
         android:id="@+id/textViewparameters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textviewbrand"
+        style="@style/CustomTextbody"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/titleparameters"
         tools:text="textViewparameters" />
 
