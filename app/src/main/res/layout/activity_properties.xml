@@ -89,4 +89,30 @@
         app:layout_constraintTop_toBottomOf="@+id/titleparameters"
         tools:text="textViewparameters" />
 
+
+    <TextView
+        android:id="@+id/googleparameters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Google Parameters"
+        android:textAllCaps="false"
+        android:textColor="#0C0B0B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewparameters" />
+
+    <TextView
+        android:id="@+id/textViewparameters2"
+        style="@style/CustomTextbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:textColor="#0C0B0B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/googleparameters"
+        tools:text="Google textview" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
