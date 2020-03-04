@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Nice Device</string>
-    <string name="fullproperties">Full Properties</string>
+    <string name="fullproperties">Properties</string>
+    <string name="Logcat">Collect Logs</string>
 
     <string name="title_activity_properties">properties</string>
     <string name="dummy_button">Dummy Button</string>

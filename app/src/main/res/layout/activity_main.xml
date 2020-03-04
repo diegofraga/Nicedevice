@@ -1,31 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/teste"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
 
         <Button
             android:id="@+id/buttonfullproperties"
             style="@style/GreenButton"
-            android:layout_width="144dp"
-            android:layout_height="45dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="27dp"
-            android:layout_marginTop="92dp"
+            android:layout_marginEnd="48dp"
             android:text="@string/fullproperties"
-            android:textColor="@color/colorwrite"
             android:textAllCaps="false"
+            android:textColor="@color/colorwrite"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonlogcat"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/buttonlogcat" />
+
+        <Button
+            android:id="@+id/buttonlogcat"
+            style="@style/GreenButton"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="48dp"
+            android:text="@string/Logcat"
+            android:textAllCaps="false"
+            android:textColor="@color/colorwrite"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonfullproperties" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
