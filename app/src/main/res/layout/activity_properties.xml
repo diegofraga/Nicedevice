@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".PropertiesActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -50,10 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Brand Name"
-        android:textAllCaps="false"
-        android:textColor="#0C0B0B"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        style="@style/CustomTextTitle"
         app:layout_constraintStart_toEndOf="@+id/textviewname"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,10 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Parameters"
-        android:textAllCaps="false"
-        android:textColor="#0C0B0B"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        style="@style/CustomTextTitle"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textviewname" />
 
@@ -95,24 +95,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Google Parameters"
-        android:textAllCaps="false"
-        android:textColor="#0C0B0B"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        style="@style/CustomTextTitle"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textViewparameters" />
 
     <TextView
-        android:id="@+id/textViewparameters2"
-        style="@style/CustomTextbody"
+        android:id="@+id/textViewgoogleparameters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:textColor="#0C0B0B"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        style="@style/CustomTextbody"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/googleparameters"
         tools:text="Google textview" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

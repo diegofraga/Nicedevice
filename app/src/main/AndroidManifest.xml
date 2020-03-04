@@ -10,11 +10,12 @@
         android:supportsRtl="true"
         android:textAllCaps="false"
         android:theme="@style/AppTheme">
+        <activity android:name=".logsActivity"></activity>
         <activity
             android:name=".PropertiesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_properties"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -11,6 +11,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
     private Button propertiesButton;
+    private Button logsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,17 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(getApplicationContext(), PropertiesActivity.class);
+
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        logsButton =findViewById(R.id.buttonfullproperties);
+        logsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), PropertiesActivity.class);
 
@@ -32,6 +44,7 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+
 
 
     }

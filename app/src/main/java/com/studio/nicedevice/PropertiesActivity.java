@@ -18,10 +18,10 @@ import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import android.os.Build;
 
-import static android.text.Html.toHtml;
 import static com.studio.nicedevice.R.id.textViewparameters;
-import static com.studio.nicedevice.R.id.textViewparameters2;
+import static com.studio.nicedevice.R.id.textViewgoogleparameters;
 import static com.studio.nicedevice.R.id.textviewbrand;
 import static com.studio.nicedevice.R.id.textviewname;
 
@@ -51,9 +51,8 @@ public class PropertiesActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_properties);
 
-        //Set orientation for Tablet or Smartphone
-        if(!isTablet(PropertiesActivity.this))
-            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //Set orientation to landscape
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
 
         // Project Name
@@ -84,43 +83,103 @@ public class PropertiesActivity extends Activity {
         stringoutput = String.valueOf(executeCommandLine(
                 "getprop | grep ro.vendor.mediatek.platform;" +
                 "getprop | grep ro.product.vendor.device;" +
-                "getprop | grep ro.build.fingerprint;" +
-                "getprop | grep ro.build.version.security_patch;" +
-                "getprop | grep ro.com.google.gmsversion;" +
-                "getprop | grep ro.product.first_api_level;" +
-                "getprop | grep ro.build.type;" +
-                "getprop | grep persist.sys.timezone;" +
-                "getprop | grep ro.product.locale;"+
-                "getprop | grep persist.sys.locale;" +
-                "getprop | grep ro.sf.lcd_density;" +
+                "getprop | grep ro.build.fingerprint;"+
                 "getprop | grep persist.sys.usb.config;"+
-                "getprop | grep ro.com.google.acsa;"+
-                "getprop | grep ro.com.google.clientidbase;"+
-                "getprop | grep ro.serialno;"+
-                "getprop | grep ro.com.google.clientidbase.ms;"));
+                "getprop | grep ro.sf.lcd_density;"+
+                "getprop | grep ro.product.locale;"+
+                "getprop | grep persist.sys.locale;"+
+                "getprop | grep persist.sys.timezone;"));
 
         parametersTextview =findViewById(textViewparameters);
         parametersTextview.setMovementMethod(new ScrollingMovementMethod());
         parametersTextview.setText(Organize(stringoutput));
 
 
-        // Google
+        // Google Parameters
+
 
 
         stringoutput = String.valueOf(executeCommandLine(
-                                "getprop | grep ro.product.cpu;" +
+                                "getprop | grep ro.build.type;" +
                                 "getprop | grep ro.build.version.security_patch;" +
                                 "getprop | grep ro.com.google.gmsversion;" +
-                                "getprop | grep ro.product.first_api_level;"));
+                                "getprop | grep ro.product.first_api_level;" +
+                                "getprop | grep ro.com.google.acsa;" +
+                                "getprop | grep ro.com.google.clientidbase;" +
+                                "getprop | grep ro.serialno;" +
+                                "getprop | grep ro.com.google.clientidbase.ms;"));
 
-        googleTextview=findViewById(textViewparameters2);
-        googleTextview.setMovementMethod(new ScrollingMovementMethod());
-        googleTextview.setText(Organize(stringoutput));
+        googleTextview=findViewById(textViewgoogleparameters);
+        //Get CPU device parameter
+        builder = getCPUdevice().append(Organize(stringoutput));
+        //Show all the parameters
+        googleTextview.setText(builder);
+
+
 
 
     }
 
+    //Creating a color function insert color in the second String(Odd index):
 
+    public void colorStringvector(String[] string,SpannableStringBuilder builder){
+
+        for (int i = 0; i < string.length; i++){
+            SpannableString str1 = new SpannableString(string[i]);
+
+            if((i%2)!=0){
+                str1.setSpan(new ForegroundColorSpan(getColor(R.color.Greentext)), 0, str1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
+                builder.append(str1);
+                builder.append("\n");
+            }else {
+                builder.append(str1);
+                builder.append(" ");
+            }
+
+
+        }
+
+    }
+
+    // Organize the String beauty
+
+    public SpannableStringBuilder Organize(String stringoutput){
+
+        //Remove Some Especial caracteres
+        stringoutput = stringoutput.replace("[", "").replace("]", "");
+
+        //Split the string in a vector of strings (words)
+        splited = stringoutput.split("\\s");
+        //Insert color on in the results (odd)
+        builder = new SpannableStringBuilder();
+        colorStringvector(splited,builder);
+
+        return builder;
+
+    }
+
+
+    //Creating a color function insert 2 strings and color the second String:
+    public void colorString2(String string1, String string2, SpannableStringBuilder builder){
+
+
+        SpannableString str1 = new SpannableString(string1);
+        builder.append(str1);
+        SpannableString str2 = new SpannableString(string2);
+        ForegroundColorSpan color=new ForegroundColorSpan(Color.parseColor("#5ec639"));
+        str2.setSpan(new ForegroundColorSpan(Color.parseColor("#5ec639")), 0, str2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
+        builder.append(" ");
+        builder.append(str2);
+        builder.append("\n");
+    }
+
+
+    public  SpannableStringBuilder getCPUdevice() {
+        String CPU = Build.SUPPORTED_ABIS[0];
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+        colorString2("cpu architecture:", CPU, builder);
+        return builder;
+    }
 
     //function execute command line (String) return output . This function its possible to use command "|"
     public String executeCommandLine(String commandLine) {
@@ -159,56 +218,6 @@ public class PropertiesActivity extends Activity {
         }
     }
 
-
-    public SpannableStringBuilder Organize(String stringoutput){
-
-        //Remove Some Especial caracteres
-        stringoutput = stringoutput.replace("[", "").replace("]", "");
-
-        //Split the string in a vector of strings (words)
-        splited = stringoutput.split("\\s");
-        //Insert color on in the results (odd)
-        builder = new SpannableStringBuilder();
-        colorStringvector(splited,builder);
-
-        return builder;
-
-    }
-
-    //Creating a color function insert color in the second String:
-    public void colorString(String string1, String string2, SpannableStringBuilder builder){
-
-
-        SpannableString str1 = new SpannableString(string1);
-        builder.append(str1);
-        SpannableString str2 = new SpannableString(string2);
-        ForegroundColorSpan color=new ForegroundColorSpan(Color.parseColor("#5ec639"));
-        str2.setSpan(new ForegroundColorSpan(Color.parseColor("#5ec639")), 0, str2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
-        builder.append(" ");
-        builder.append(str2);
-    }
-
-
-    //Creating a color function insert color in the second String(Odd index):
-
-    public void colorStringvector(String[] string,SpannableStringBuilder builder){
-
-        for (int i = 0; i < string.length; i++){
-            SpannableString str1 = new SpannableString(string[i]);
-
-            if((i%2)!=0){
-                str1.setSpan(new ForegroundColorSpan(getColor(R.color.Greentext)), 0, str1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
-                builder.append(str1);
-                builder.append("\n");
-            }else {
-                builder.append(str1);
-                builder.append(" ");
-            }
-
-
-        }
-
-    }
 
 
     // App functions
