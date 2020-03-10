@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
-import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.TextView;
@@ -56,68 +55,123 @@ public class PropertiesActivity extends Activity {
 
 
         // Project Name
-        //Get the properties
-        String stringoutput = String.valueOf(executeCommandLine(
-                "getprop | grep ro.mid_board;" +
-                "getprop | grep ro.build.product;" +
-                "getprop | grep ro.product.name;" +
-                "getprop | grep ro.product.board;" +
-                "getprop | grep ro.product.model;" +
-                "getprop | grep ro.product.device;" +
-                "getprop | grep ro.product.vendor.model"));
 
-        nametextview = findViewById(textviewname);;
-        nametextview.setText(Organize(stringoutput));
+        //Get the properties
+        String stringoutput;
+        stringoutput = String.valueOf(executeCommandLine(
+                                        "getprop | grep ro.mid_board;" +
+                                        "getprop | grep ro.build.product;" +
+                                        "getprop | grep ro.product.name;" +
+                                        "getprop | grep ro.product.board;" +
+                                        "getprop | grep ro.product.model;" +
+                                        "getprop | grep ro.product.device;" +
+                                        "getprop | grep ro.product.vendor.model"));
+
+        nametextview = findViewById(textviewname);
+        nametextview.setText(OrganizeLine(stringoutput));
 
         // Brand Name
+
         stringoutput = String.valueOf(executeCommandLine(
-                "getprop | grep ro.build.host;"+
-                "getprop | grep ro.product.brand;" +
-                "getprop | grep ro.product.manufacturer;" +
-                "getprop | grep ro.product.vendor.manufacturer;"));
+                                        "getprop | grep ro.build.host;" +
+                                        "getprop | grep ro.product.brand;" +
+                                        "getprop | grep ro.product.manufacturer;" +
+                                        "getprop | grep ro.product.vendor.manufacturer;"));
 
         brandtextview = findViewById(textviewbrand);
-        brandtextview.setText(Organize(stringoutput));
+        brandtextview.setText(OrganizeLine(stringoutput));
 
         // Parameters Project
+
         stringoutput = String.valueOf(executeCommandLine(
-                "getprop | grep ro.vendor.mediatek.platform;" +
-                "getprop | grep ro.product.vendor.device;" +
-                "getprop | grep ro.build.fingerprint;"+
-                "getprop | grep persist.sys.usb.config;"+
-                "getprop | grep ro.sf.lcd_density;"+
-                "getprop | grep ro.product.locale;"+
-                "getprop | grep persist.sys.locale;"+
-                "getprop | grep persist.sys.timezone;"));
+                                        "getprop | grep ro.vendor.mediatek.platform;" +
+                                        "getprop | grep ro.product.vendor.device;" +
+                                        "getprop | grep ro.build.fingerprint;"+
+                                        "getprop | grep persist.sys.usb.config;"+
+                                        "getprop | grep ro.sf.lcd_density;"+
+                                        "getprop | grep ro.product.locale;"+
+                                        "getprop | grep persist.sys.locale;"+
+                                        "getprop | grep persist.sys.timezone;"));
 
         parametersTextview =findViewById(textViewparameters);
-        parametersTextview.setMovementMethod(new ScrollingMovementMethod());
-        parametersTextview.setText(Organize(stringoutput));
+        parametersTextview.setText(OrganizeLine(stringoutput));
 
 
         // Google Parameters
 
-
-
         stringoutput = String.valueOf(executeCommandLine(
-                                "getprop | grep ro.build.type;" +
-                                "getprop | grep ro.build.version.security_patch;" +
-                                "getprop | grep ro.com.google.gmsversion;" +
-                                "getprop | grep ro.product.first_api_level;" +
-                                "getprop | grep ro.com.google.acsa;" +
-                                "getprop | grep ro.com.google.clientidbase;" +
-                                "getprop | grep ro.serialno;" +
-                                "getprop | grep ro.com.google.clientidbase.ms;"));
+                                        "getprop | grep ro.build.type;" +
+                                        "getprop | grep ro.build.version.security_patch;" +
+                                        "getprop | grep ro.com.google.gmsversion;" +
+                                        "getprop | grep ro.product.first_api_level;" +
+                                        "getprop | grep ro.com.google.acsa;" +
+                                        "getprop | grep ro.com.google.clientidbase;" +
+                                        "getprop | grep ro.serialno;" +
+                                        "getprop | grep ro.com.google.clientidbase.ms;"));
 
         googleTextview=findViewById(textViewgoogleparameters);
         //Get CPU device parameter
-        builder = getCPUdevice().append(Organize(stringoutput));
+        builder = getCPUdevice().append(OrganizeLine(stringoutput));
         //Show all the parameters
         googleTextview.setText(builder);
 
+    }
 
 
 
+    //Creating a color function insert color after ":" checking in the int index
+
+    public void colorStringvectorline(String[] string,SpannableStringBuilder builder){
+
+
+        for (int i = 0; i < string.length; i++) {
+            String s = string[i];
+            int index;
+            index = s.indexOf(":") + 1;
+            SpannableString str1 = new SpannableString(s);
+            str1.setSpan(new ForegroundColorSpan(getColor(R.color.Greentext)), index, str1.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.append(str1);
+            builder.append("\n");
+
+
+        }
+
+    }
+
+
+
+    // Organize the String beauty
+
+    public SpannableStringBuilder OrganizeLine(String stringoutput){
+
+        //Remove Some Especial caracteres
+        stringoutput = stringoutput.replace("[", "").replace("]", "");
+
+        //Split the string in a vector of lines "\n"
+        splited = stringoutput.split("\\r?\\n");
+
+
+
+        //Insert color on in the results (odd)
+        builder = new SpannableStringBuilder();
+        colorStringvectorline(splited,builder);
+        return builder;
+
+    }
+
+
+
+    //Creating a color function insert 2 strings and color the second String:
+    public void colorString2(String string1, String string2, SpannableStringBuilder builder){
+
+
+        SpannableString str1 = new SpannableString(string1);
+        builder.append(str1);
+        SpannableString str2 = new SpannableString(string2);
+        str2.setSpan(new ForegroundColorSpan(Color.parseColor("#5ec639")), 0, str2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
+        builder.append(" ");
+        builder.append(str2);
+        builder.append("\n");
     }
 
     //Creating a color function insert color in the second String(Odd index):
@@ -140,39 +194,6 @@ public class PropertiesActivity extends Activity {
         }
 
     }
-
-    // Organize the String beauty
-
-    public SpannableStringBuilder Organize(String stringoutput){
-
-        //Remove Some Especial caracteres
-        stringoutput = stringoutput.replace("[", "").replace("]", "");
-
-        //Split the string in a vector of strings (words)
-        splited = stringoutput.split("\\s");
-        //Insert color on in the results (odd)
-        builder = new SpannableStringBuilder();
-        colorStringvector(splited,builder);
-
-        return builder;
-
-    }
-
-
-    //Creating a color function insert 2 strings and color the second String:
-    public void colorString2(String string1, String string2, SpannableStringBuilder builder){
-
-
-        SpannableString str1 = new SpannableString(string1);
-        builder.append(str1);
-        SpannableString str2 = new SpannableString(string2);
-        ForegroundColorSpan color=new ForegroundColorSpan(Color.parseColor("#5ec639"));
-        str2.setSpan(new ForegroundColorSpan(Color.parseColor("#5ec639")), 0, str2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
-        builder.append(" ");
-        builder.append(str2);
-        builder.append("\n");
-    }
-
 
     public  SpannableStringBuilder getCPUdevice() {
         String CPU = Build.SUPPORTED_ABIS[0];
@@ -198,8 +219,6 @@ public class PropertiesActivity extends Activity {
             String read;
             StringBuilder output=new StringBuilder();
 
-            int cont =0;
-
             while ((read = reader.readLine())!=null){
                 output.append(read);
 
@@ -218,6 +237,38 @@ public class PropertiesActivity extends Activity {
         }
     }
 
+    //Creating a color function insert 3 strings and color the second String:
+    public void colorString2(String string1, String string2,String string3,  SpannableStringBuilder builder){
+
+
+        SpannableString str1 = new SpannableString(string1);
+        builder.append(str1);
+        SpannableString str2 = new SpannableString(string2);
+        builder.append(str2);
+        SpannableString str3 = new SpannableString(string3);
+        str2.setSpan(new ForegroundColorSpan(Color.parseColor("#5ec639")), 0, str2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
+        builder.append(" ");
+        builder.append(str2);
+        builder.append("\n");
+    }
+
+    // Organize the String beauty
+
+    public SpannableStringBuilder Organize(String stringoutput){
+
+        //Remove Some Especial caracteres
+        stringoutput = stringoutput.replace("[", "").replace("]", "");
+
+        //Split the string in a vector of strings (words)
+        splited = stringoutput.split("\\s");
+
+        //Insert color on in the results (odd)
+        builder = new SpannableStringBuilder();
+        colorStringvector(splited,builder);
+
+        return builder;
+
+    }
 
 
     // App functions
