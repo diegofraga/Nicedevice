@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Nice Device</string>
     <string name="fullproperties">Properties</string>
-    <string name="Logcat">Collect Logs</string>
+    <string name="logcat">Collect Logs</string>
+    <string name="crearlog">Clear Logs</string>
+    <string name="startlog">Start Logs</string>
+    <string name="stoplog">Stop Logs</string>
+    <string name="googleconfig">Google Config</string>
+    <string name="developmentswitch">Development Options</string>
+
 
     <string name="title_activity_properties">properties</string>
     <string name="dummy_button">Dummy Button</string>

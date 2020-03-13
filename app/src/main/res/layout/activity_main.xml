@@ -1,52 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/teste"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:fillViewport="true">
 
 
-        <Button
-            android:id="@+id/buttonfullproperties"
-            style="@style/GreenButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="27dp"
-            android:layout_marginEnd="48dp"
-            android:text="@string/fullproperties"
-            android:textAllCaps="false"
-            android:textColor="@color/colorwrite"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonlogcat"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/buttonlogcat" />
-
-        <Button
-            android:id="@+id/buttonlogcat"
-            style="@style/GreenButton"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="48dp"
-            android:text="@string/Logcat"
-            android:textAllCaps="false"
-            android:textColor="@color/colorwrite"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buttonfullproperties" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/buttonfullproperties"
+                style="@style/GreenButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/fullproperties"
+                android:textAllCaps="false"
+                android:textColor="@color/colorwrite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/buttonlogcat"
+                style="@style/redButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/logcat"
+                android:textAllCaps="false"
+                android:textColor="@color/colorwrite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/buttonfullproperties" />
+
+            <Button
+                android:id="@+id/buttongoogleconfig"
+                style="@style/GreenButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/googleconfig"
+                android:textAllCaps="false"
+                android:textColor="@color/colorwrite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/buttonlogcat" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.90" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="245dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/developmentswitch"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/buttongoogleconfig" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

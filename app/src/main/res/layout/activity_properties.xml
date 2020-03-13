@@ -1,113 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".PropertiesActivity">
+    tools:context=".PropertiesActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <ScrollView
 
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <HorizontalScrollView
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/titlename"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Project Name"
-        style="@style/CustomTextTitle"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.025" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.975" />
 
 
-    <TextView
-        android:id="@+id/textviewname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/CustomTextbody"
-        android:scrollbars="vertical"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/titlename"
-        tools:text="textviewname" />
-
-    <TextView
-        android:id="@+id/titlebrand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Brand Name"
-        style="@style/CustomTextTitle"
-        app:layout_constraintStart_toEndOf="@+id/textviewname"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textviewbrand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        style="@style/CustomTextbody"
-        app:layout_constraintStart_toEndOf="@+id/textviewname"
-        app:layout_constraintTop_toBottomOf="@+id/titlebrand"
-        tools:text="textviewbrand" />
-
-    <TextView
-        android:id="@+id/titleparameters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Parameters"
-        style="@style/CustomTextTitle"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textviewname" />
-
-    <TextView
-        android:id="@+id/textViewparameters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        style="@style/CustomTextbody"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/titleparameters"
-        tools:text="textViewparameters" />
+                <TextView
+                    android:id="@+id/titlename"
+                    style="@style/CustomTextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Project Name"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/googleparameters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Google Parameters"
-        style="@style/CustomTextTitle"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textViewparameters" />
+                <TextView
+                    android:id="@+id/textviewname"
+                    style="@style/CustomTextbody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/titlename"
+                    tools:text="textviewname" />
 
-    <TextView
-        android:id="@+id/textViewgoogleparameters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        style="@style/CustomTextbody"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/googleparameters"
-        tools:text="Google textview" />
+                <TextView
+                    android:id="@+id/titlebrand"
+                    style="@style/CustomTextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Brand Name"
+                    app:layout_constraintStart_toEndOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/textviewname" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                <TextView
+                    android:id="@+id/textviewbrand"
+                    style="@style/CustomTextbody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    app:layout_constraintStart_toEndOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/titlebrand"
+                    tools:text="textviewbrand" />
+
+                <TextView
+                    android:id="@+id/titleparameters"
+                    style="@style/CustomTextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Parameters"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/textviewbrand" />
+
+                <TextView
+                    android:id="@+id/textViewparameters"
+                    style="@style/CustomTextbody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/titleparameters"
+                    tools:text="textViewparameters" />
+
+
+                <TextView
+                    android:id="@+id/googleparameters"
+                    style="@style/CustomTextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Google Parameters"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewparameters" />
+
+                <TextView
+                    android:id="@+id/textViewgoogleparameters"
+                    style="@style/CustomTextbody"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@+id/googleparameters"
+                    tools:text="Google textview" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </HorizontalScrollView>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

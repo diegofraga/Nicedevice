@@ -51,7 +51,7 @@ public class PropertiesActivity extends Activity {
         setContentView(R.layout.activity_properties);
 
         //Set orientation to landscape
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
 
         // Project Name
@@ -75,6 +75,10 @@ public class PropertiesActivity extends Activity {
         stringoutput = String.valueOf(executeCommandLine(
                                         "getprop | grep ro.build.host;" +
                                         "getprop | grep ro.product.brand;" +
+                                        "getprop | grep ro.product.mtp.name;" +
+                                        "getprop | grep ro.product.usb.name;" +
+                                        "getprop | grep ro.product.wifi.name;" +
+                                        "getprop | grep ro.product.bluetooth.name;" +
                                         "getprop | grep ro.product.manufacturer;" +
                                         "getprop | grep ro.product.vendor.manufacturer;"));
 
@@ -124,8 +128,7 @@ public class PropertiesActivity extends Activity {
     public void colorStringvectorline(String[] string,SpannableStringBuilder builder){
 
 
-        for (int i = 0; i < string.length; i++) {
-            String s = string[i];
+        for (String s : string) {
             int index;
             index = s.indexOf(":") + 1;
             SpannableString str1 = new SpannableString(s);
@@ -203,7 +206,7 @@ public class PropertiesActivity extends Activity {
     }
 
     //function execute command line (String) return output . This function its possible to use command "|"
-    public String executeCommandLine(String commandLine) {
+    public static String executeCommandLine(String commandLine) {
         try {
 
             String[] cmd = {
@@ -221,8 +224,6 @@ public class PropertiesActivity extends Activity {
 
             while ((read = reader.readLine())!=null){
                 output.append(read);
-
-
                 output.append("\n");
                 Log.d("executed command ", output.toString());
             }

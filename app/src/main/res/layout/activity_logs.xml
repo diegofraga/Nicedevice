@@ -6,4 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".logsActivity">
 
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.025" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.975" />
+
+
+    <Button
+        android:id="@+id/buttonlogcat"
+        style="@style/GreenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/startlog"
+        android:textAllCaps="false"
+        android:textColor="@color/colorwrite"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonClearlogs"
+        style="@style/GreenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/crearlog"
+        android:textAllCaps="false"
+        android:textColor="@color/colorwrite"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/buttonStoplogs"
+        style="@style/GreenButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/startlog"
+        android:textAllCaps="false"
+        android:textColor="@color/colorwrite"
+        android:textSize="12sp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

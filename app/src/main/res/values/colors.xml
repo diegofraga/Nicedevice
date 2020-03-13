@@ -9,4 +9,9 @@
 
     <color name="black_overlay">#66000000</color>
     <color name="Greentext">#5ec639</color>
+
+    <color name="colorRed">#E71919</color>
+    <color name="colorRedDark">#920F0F</color>
+    <color name="colorRedLight">#F34141</color>
+
 </resources>
