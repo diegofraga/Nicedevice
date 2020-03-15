@@ -10,16 +10,30 @@ import android.os.BatteryManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import java.security.KeyStore;
 
 import static android.content.ContentValues.TAG;
 
 public class GoogleActivity extends MainActivity {
 
+
+
+
+    private ProgressBar spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google);
+
+
+
+        spinner=(ProgressBar)findViewById(R.id.progressBar);
+        spinner.setVisibility(View.VISIBLE);
 
         try {
             configGoogle();
@@ -28,10 +42,25 @@ public class GoogleActivity extends MainActivity {
             Log.e("GOOGLE ACTIVITY", e.toString());
             e.printStackTrace();
         }
-
+        //spinner.setVisibility(View.GONE);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     private void configGoogle(){
+
+
 
         enableADB(true);
         enableDevelopmentMode(true);
@@ -42,7 +71,7 @@ public class GoogleActivity extends MainActivity {
         connectWifi("Google_Approval","android7932");
         enableTime(true);
         enableTimeZone(true);
-        startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
+        //startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
 
     }
 
