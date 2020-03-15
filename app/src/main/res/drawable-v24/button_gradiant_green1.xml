@@ -12,6 +12,6 @@
         android:endColor="@color/colorAccentLight"
         android:centerColor="@color/colorAccent"
         android:startColor="@color/colorAccent"/>
-        android:allcaps=""
+
 
 </shape>

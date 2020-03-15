@@ -7,6 +7,8 @@
     <string name="stoplog">Stop Logs</string>
     <string name="googleconfig">Google Config</string>
     <string name="developmentswitch">Development Options</string>
+    <string name="setdeviceowner1">"adb shell dpm set-device-owner com.studio.blacknight/.DeviceAdminReceiver"</string>
+    <string name="setdeviceowner2">Please Set Device Owner:</string>
 
 
     <string name="title_activity_properties">properties</string>

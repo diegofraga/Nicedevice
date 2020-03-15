@@ -9,6 +9,10 @@ import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
+import android.widget.Toast;
+
+import static android.content.ContentValues.TAG;
 
 public class GoogleActivity extends MainActivity {
 
@@ -17,8 +21,13 @@ public class GoogleActivity extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google);
 
-        configGoogle();
-
+        try {
+            configGoogle();
+        }catch (Exception e){
+            Log.e("GOOGLE ACTIVITY", "Device owner not set");
+            Log.e("GOOGLE ACTIVITY", e.toString());
+            e.printStackTrace();
+        }
 
     }
 
