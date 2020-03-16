@@ -30,6 +30,7 @@ import java.util.concurrent.ExecutionException;
 import static android.content.ContentValues.TAG;
 import static java.lang.Thread.sleep;
 
+
 public class MainActivity extends Activity {
 
     private Button propertiesButton;
@@ -86,7 +87,6 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), GoogleActivity.class);
-
                 startActivity(intent);
                 finish();
 

@@ -6,16 +6,121 @@
     android:layout_height="match_parent"
     tools:context=".GoogleActivity">
 
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.025" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.975" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="195dp"
-        android:layout_height="219dp"
+        android:layout_height="0dp"
         android:progressDrawable="@drawable/circular_progress_bar"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/enabledevmode"
+        style="@style/CustomTextbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/enabledevmode"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/Checkdevmode"
+        android:layout_width="57dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:visibility="invisible"
+        android:src="@drawable/checkgreenok"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/enabledevmode"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/enableADBmode"
+        style="@style/CustomTextbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/enableadbmode"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/enabledevmode" />
+
+
+    <ImageView
+        android:id="@+id/CheckgreenboxADB"
+        android:layout_width="57dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/checkgreenok"
+        app:layout_constraintStart_toEndOf="@+id/enablestayawake"
+        app:layout_constraintTop_toBottomOf="@+id/Checkgreenstayawake" />
+
+    <TextView
+        android:id="@+id/enablestayawake"
+        style="@style/CustomTextbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/enablestayawake"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/enableADBmode" />
+
+    <ImageView
+        android:id="@+id/Checkgreenstayawake"
+        android:layout_width="57dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/checkgreenok"
+        app:layout_constraintStart_toEndOf="@+id/enableADBmode"
+        app:layout_constraintTop_toBottomOf="@+id/Checkdevmode" />
+
+    <TextView
+        android:id="@+id/enableWifi"
+        style="@style/CustomTextbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/enablewifi"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/enablestayawake" />
+
+
+
+    <ImageView
+        android:id="@+id/Checkwifi"
+        android:layout_width="57dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/checkgreenok"
+        app:layout_constraintStart_toEndOf="@+id/enableWifi"
+        app:layout_constraintTop_toBottomOf="@+id/CheckgreenboxADB" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

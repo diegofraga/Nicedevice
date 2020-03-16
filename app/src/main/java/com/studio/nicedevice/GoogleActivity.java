@@ -8,9 +8,11 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -25,12 +27,15 @@ public class GoogleActivity extends MainActivity {
 
     private ProgressBar spinner;
 
+
+    private ImageView imagedevmode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google);
 
-
+        imagedevmode = findViewById(R.id.Checkdevmode);
 
         spinner=(ProgressBar)findViewById(R.id.progressBar);
         spinner.setVisibility(View.VISIBLE);
@@ -45,30 +50,17 @@ public class GoogleActivity extends MainActivity {
         //spinner.setVisibility(View.GONE);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void configGoogle(){
 
-
-
-        enableADB(true);
         enableDevelopmentMode(true);
+        enableADB(true);
         enableStayOnWhilePluggedIn(true);
         enableWIFI(true);
+        connectWifi("Fraga","16011991");
         connectWifi("android_2.4","android7932");
         connectWifi("android_5","android7932");
         connectWifi("Google_Approval","android7932");
+        connectWifi("Fraga","16011991");
         enableTime(true);
         enableTimeZone(true);
         //startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
@@ -95,9 +87,22 @@ public class GoogleActivity extends MainActivity {
 
     private void enableDevelopmentMode(boolean enabled){
         if (enabled) {
-            mDevicePolicyManager.setGlobalSetting(
-                    mAdminComponentName,
-                    Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, "1");
+            try {
+                mDevicePolicyManager.setGlobalSetting(
+                        mAdminComponentName,
+                        Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, "1");
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        imagedevmode.setVisibility(View.VISIBLE);
+                    }
+                }, 5000);
+
+            }catch (Exception e){
+
+            imagedevmode.setVisibility(View.INVISIBLE);
+            }
 
         }else{
             mDevicePolicyManager.setGlobalSetting(
