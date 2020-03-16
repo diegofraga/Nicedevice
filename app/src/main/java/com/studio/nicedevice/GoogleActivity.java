@@ -29,6 +29,9 @@ public class GoogleActivity extends MainActivity {
 
 
     private ImageView imagedevmode;
+    private ImageView imageadbmode;
+    private ImageView imagestayawake;
+    private  ImageView imagewifi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +39,22 @@ public class GoogleActivity extends MainActivity {
         setContentView(R.layout.activity_google);
 
         imagedevmode = findViewById(R.id.Checkdevmode);
+        imageadbmode = findViewById(R.id.Checkgreenadb);
+        imagestayawake = findViewById(R.id.Checkstayawake);
+        imagewifi = findViewById(R.id.Checkwifi);
 
         spinner=(ProgressBar)findViewById(R.id.progressBar);
         spinner.setVisibility(View.VISIBLE);
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                spinner.setVisibility(View.INVISIBLE);
+            }
+        }, 5000);
+
 
         try {
             configGoogle();
@@ -47,7 +63,6 @@ public class GoogleActivity extends MainActivity {
             Log.e("GOOGLE ACTIVITY", e.toString());
             e.printStackTrace();
         }
-        //spinner.setVisibility(View.GONE);
     }
 
     private void configGoogle(){
@@ -56,11 +71,7 @@ public class GoogleActivity extends MainActivity {
         enableADB(true);
         enableStayOnWhilePluggedIn(true);
         enableWIFI(true);
-        connectWifi("Fraga","16011991");
-        connectWifi("android_2.4","android7932");
-        connectWifi("android_5","android7932");
-        connectWifi("Google_Approval","android7932");
-        connectWifi("Fraga","16011991");
+        setNetworks();
         enableTime(true);
         enableTimeZone(true);
         //startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
@@ -72,11 +83,10 @@ public class GoogleActivity extends MainActivity {
 
     private void connectWifi(String SSID , String PASSWORD) {
 
-        WifiConfiguration wifiConfig = new WifiConfiguration();
 
+        WifiConfiguration wifiConfig = new WifiConfiguration();
         wifiConfig.SSID =  String.format("\"%s\"", SSID);
         wifiConfig.preSharedKey = String.format("\"%s\"", PASSWORD);
-
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         int netId = wifiManager.addNetwork(wifiConfig);
         wifiManager.disconnect();
@@ -84,6 +94,28 @@ public class GoogleActivity extends MainActivity {
         wifiManager.reconnect();
 
     }
+
+    private void setNetworks(){
+        try {
+            connectWifi("Fraga", "16011991");
+            connectWifi("android_2.4", "android7932");
+            connectWifi("android_5", "android7932");
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    imagewifi.setVisibility(View.VISIBLE);
+                }
+            }, 2000);
+
+        }catch (Exception e){
+            imagewifi.setVisibility(View.INVISIBLE);
+
+        }
+
+    }
+
+
 
     private void enableDevelopmentMode(boolean enabled){
         if (enabled) {
@@ -97,7 +129,7 @@ public class GoogleActivity extends MainActivity {
                     public void run() {
                         imagedevmode.setVisibility(View.VISIBLE);
                     }
-                }, 5000);
+                }, 2000);
 
             }catch (Exception e){
 
@@ -110,6 +142,71 @@ public class GoogleActivity extends MainActivity {
                     Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, "0");
         }
     }
+
+
+    private void enableADB(boolean enabled){
+        if (enabled) {
+            try {
+            mDevicePolicyManager.setGlobalSetting(
+                    mAdminComponentName,
+                    Settings.Global.ADB_ENABLED, "1");
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    imageadbmode.setVisibility(View.VISIBLE);
+                }
+            }, 2000);
+
+        }catch (Exception e){
+                imageadbmode.setVisibility(View.INVISIBLE);
+        }
+
+
+        }else{
+            mDevicePolicyManager.setGlobalSetting(
+                    mAdminComponentName,
+                    Settings.Global.ADB_ENABLED, "0");
+        }
+    }
+
+
+
+    private void enableStayOnWhilePluggedIn(boolean enabled){
+        if (enabled) {
+            try {
+            mDevicePolicyManager.setGlobalSetting(
+                    mAdminComponentName,
+                    Settings.Global.STAY_ON_WHILE_PLUGGED_IN,
+                    Integer.toString(BatteryManager.BATTERY_PLUGGED_AC
+                            | BatteryManager.BATTERY_PLUGGED_USB
+                            | BatteryManager.BATTERY_PLUGGED_WIRELESS));
+
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    imagestayawake.setVisibility(View.VISIBLE);
+                }
+            }, 2000);
+
+            }catch (Exception e){
+                imagestayawake.setVisibility(View.INVISIBLE);
+            }
+
+        } else {
+            mDevicePolicyManager.setGlobalSetting(
+                    mAdminComponentName,
+                    Settings.Global.STAY_ON_WHILE_PLUGGED_IN,
+                    "0"
+            );
+        }
+    }
+
+
+
 
     private void enableWIFI(boolean enabled){
         if (enabled) {
@@ -149,35 +246,6 @@ public class GoogleActivity extends MainActivity {
     }
 
 
-    private void enableADB(boolean enabled){
-        if (enabled) {
-            mDevicePolicyManager.setGlobalSetting(
-                    mAdminComponentName,
-                    Settings.Global.ADB_ENABLED, "1");
-
-        }else{
-            mDevicePolicyManager.setGlobalSetting(
-                    mAdminComponentName,
-                    Settings.Global.ADB_ENABLED, "0");
-        }
-    }
-
-    private void enableStayOnWhilePluggedIn(boolean enabled){
-        if (enabled) {
-            mDevicePolicyManager.setGlobalSetting(
-                    mAdminComponentName,
-                    Settings.Global.STAY_ON_WHILE_PLUGGED_IN,
-                    Integer.toString(BatteryManager.BATTERY_PLUGGED_AC
-                            | BatteryManager.BATTERY_PLUGGED_USB
-                            | BatteryManager.BATTERY_PLUGGED_WIRELESS));
-        } else {
-            mDevicePolicyManager.setGlobalSetting(
-                    mAdminComponentName,
-                    Settings.Global.STAY_ON_WHILE_PLUGGED_IN,
-                    "0"
-            );
-        }
-    }
 
 
 

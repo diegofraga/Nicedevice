@@ -144,7 +144,7 @@ public class MainActivity extends Activity {
 
             Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
 
-            startActivity(intent);
+           // startActivity(intent);
             //Toast.makeText(this, "Device Owner not set", Toast.LENGTH_LONG).show();
             //Log.e(TAG, "Device owner not set");
             //Log.e(TAG, e.toString());
