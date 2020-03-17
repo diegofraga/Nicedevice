@@ -3,6 +3,8 @@ package com.studio.nicedevice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.admin.DevicePolicyManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
@@ -14,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.security.KeyStore;
@@ -31,7 +34,11 @@ public class GoogleActivity extends MainActivity {
     private ImageView imagedevmode;
     private ImageView imageadbmode;
     private ImageView imagestayawake;
-    private  ImageView imagewifi;
+    private ImageView imagewifi;
+    private ImageView imagetime;
+
+
+    private TextView time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,19 @@ public class GoogleActivity extends MainActivity {
         imageadbmode = findViewById(R.id.Checkgreenadb);
         imagestayawake = findViewById(R.id.Checkstayawake);
         imagewifi = findViewById(R.id.Checkwifi);
+        imagetime = findViewById(R.id.Checktime);
+
+        time = findViewById(R.id.enabletime);
+
+
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
+
+            }
+        });
 
         spinner=(ProgressBar)findViewById(R.id.progressBar);
         spinner.setVisibility(View.VISIBLE);
@@ -74,7 +94,7 @@ public class GoogleActivity extends MainActivity {
         setNetworks();
         enableTime(true);
         enableTimeZone(true);
-        //startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
+
 
     }
 
@@ -92,14 +112,15 @@ public class GoogleActivity extends MainActivity {
         wifiManager.disconnect();
         wifiManager.enableNetwork(netId, true);
         wifiManager.reconnect();
-
     }
 
     private void setNetworks(){
         try {
-            connectWifi("Fraga", "16011991");
+
             connectWifi("android_2.4", "android7932");
             connectWifi("android_5", "android7932");
+            connectWifi("Fraga", "16011991");
+            connectWifi("Google_Approval", "android7932");
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -247,14 +268,34 @@ public class GoogleActivity extends MainActivity {
 
 
 
+    public void SetAdminOwner() {
+
+        // Retrieve Device Policy Manager so that we can check whether we can lock to screen later
+        mDevicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+
+        // Retrieve DeviceAdminReceiver ComponentName so we can make device management api calls later
+        mAdminComponentName = DeviceAdminReceiver.getComponentName(this);
+        Log.d(TAG, "mAdminComponentName:" + mAdminComponentName);
+
+        // Retrieve Package Manager so that we can enable and disable LockedActivity
+        mPackageManager = this.getPackageManager();
+
+        try {
+            mDevicePolicyManager.setLockTaskPackages(mAdminComponentName, APP_PACKAGES);
+        } catch (Exception e) {
 
 
+            //startActivity(intent_popUp);
+            Toast.makeText(this, "Device Owner not set", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Device owner not set");
+            Log.e(TAG, e.toString());
+            e.printStackTrace();
 
 
+        }
 
 
-
-
+    }
 
     @Override
     public void onBackPressed() {

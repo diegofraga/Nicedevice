@@ -40,7 +40,6 @@ public class MainActivity extends Activity {
 
 
 
-
     public static final String NICEDEVICE_PACKAGE = "com.studio.nicedevice";
     public static final String[] APP_PACKAGES = {NICEDEVICE_PACKAGE};
     public DevicePolicyManager mDevicePolicyManager;
@@ -51,6 +50,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         SetAdminOwner();
@@ -85,6 +85,7 @@ public class MainActivity extends Activity {
         googleConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 Intent intent = new Intent(getApplicationContext(), GoogleActivity.class);
                 startActivity(intent);
@@ -141,10 +142,8 @@ public class MainActivity extends Activity {
             mDevicePolicyManager.setLockTaskPackages(mAdminComponentName, APP_PACKAGES);
         } catch (Exception e) {
 
-
-            Intent intent = new Intent(getApplicationContext(), PopupActivity.class);
-
-           // startActivity(intent);
+            Intent intent_popUp = new Intent(getApplicationContext(), PopupActivity.class);
+            startActivity(intent_popUp);
             //Toast.makeText(this, "Device Owner not set", Toast.LENGTH_LONG).show();
             //Log.e(TAG, "Device owner not set");
             //Log.e(TAG, e.toString());

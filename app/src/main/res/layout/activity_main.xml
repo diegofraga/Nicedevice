@@ -18,6 +18,21 @@
             android:layout_height="match_parent"
             android:id="@+id/constrainlayout">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.90" />
+
 
             <Button
                 android:id="@+id/buttonfullproperties"
@@ -62,20 +77,20 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/buttonlogcat" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/buttonremotemode"
+                style="@style/GreenButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.1"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_marginTop="20dp"
+                android:text="@string/remotemode"
+                android:textAllCaps="false"
+                android:textColor="@color/colorwrite"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/buttongoogleconfig" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.90" />
 
             <Switch
                 android:id="@+id/switch1"
@@ -87,7 +102,7 @@
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toBottomOf="@+id/buttongoogleconfig" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonremotemode" />
 
 
 

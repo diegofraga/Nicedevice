@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.format.Formatter;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.TextView;
@@ -115,7 +118,12 @@ public class PropertiesActivity extends Activity {
 
         googleTextview=findViewById(textViewgoogleparameters);
         //Get CPU device parameter
+
+
         builder = getCPUdevice().append(OrganizeLine(stringoutput));
+
+        builder = builder.append(getIPdevice());
+
         //Show all the parameters
         googleTextview.setText(builder);
 
@@ -204,6 +212,18 @@ public class PropertiesActivity extends Activity {
         colorString2("cpu architecture:", CPU, builder);
         return builder;
     }
+
+    public  SpannableStringBuilder getIPdevice() {
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+        String ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+        colorString2("device IP:", ipAddress, builder);
+        return builder;
+    }
+
+
+
+
 
     //function execute command line (String) return output . This function its possible to use command "|"
     public static String executeCommandLine(String commandLine) {

@@ -9,26 +9,26 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class PopupActivity extends Activity {
 
 
 
     Button closePopupButton;
+    TextView commandSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup);
 
-
-
-
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
 
         closePopupButton = findViewById(R.id.ClosePopupButton);
+        commandSet = findViewById(R.id.setdeviceowner1);
         closePopupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +42,8 @@ public class PopupActivity extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.9),(int)(height*.35) );
+        getWindow().setLayout((int)(600),(int)(300) );
+        //getWindow().setLayout((int)(width*.9),(int)(height*.35) );
 
 
         WindowManager.LayoutParams params = getWindow().getAttributes();

@@ -124,4 +124,29 @@
         app:layout_constraintTop_toBottomOf="@+id/Checkstayawake" />
 
 
+
+    <TextView
+        android:id="@+id/enabletime"
+        style="@style/CustomTextbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/enabletime"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/enableWifi" />
+
+
+    <ImageView
+        android:id="@+id/Checktime"
+        android:layout_width="57dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/checkgreenok"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/enableWifi"
+        app:layout_constraintTop_toBottomOf="@+id/Checkwifi" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
