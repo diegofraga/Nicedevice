@@ -132,6 +132,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/enabletime"
+        android:textColor="@color/colorblue"
+        android:textStyle="bold|italic"
         android:clickable="true"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/enableWifi" />
@@ -147,6 +149,33 @@
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/enableWifi"
         app:layout_constraintTop_toBottomOf="@+id/Checkwifi" />
+
+
+
+    <TextView
+        android:id="@+id/enabledisplaysettings"
+        style="@style/CustomTextbody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/enabledisplay"
+        android:textColor="@color/colorblue"
+        android:textStyle="bold|italic"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/enabletime" />
+
+
+    <ImageView
+        android:id="@+id/Checkdisplaysettings"
+        android:layout_width="57dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/checkgreenok"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/enableWifi"
+        app:layout_constraintTop_toBottomOf="@+id/Checktime" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

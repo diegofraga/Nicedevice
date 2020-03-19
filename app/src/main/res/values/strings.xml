@@ -17,7 +17,8 @@
     <string name="enableadbmode">Enable ADB Mode:</string>
     <string name="enablestayawake">Enable stay awake:</string>
     <string name="enablewifi">Enable WIFI P&amp;D:</string>
-    <string name="enabletime">Enable Time:</string>
+    <string name="enabletime">Enable Time / Time zone:</string>
+    <string name="enabledisplay">Enable Display Settings:</string>
 
 
 </resources>

@@ -11,6 +11,7 @@ import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +40,7 @@ public class GoogleActivity extends MainActivity {
 
 
     private TextView time;
+    private TextView displaysettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,22 +52,11 @@ public class GoogleActivity extends MainActivity {
         imagestayawake = findViewById(R.id.Checkstayawake);
         imagewifi = findViewById(R.id.Checkwifi);
         imagetime = findViewById(R.id.Checktime);
-
         time = findViewById(R.id.enabletime);
-
-
-        time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
-
-            }
-        });
+        displaysettings = findViewById(R.id.enabledisplaysettings);
 
         spinner=(ProgressBar)findViewById(R.id.progressBar);
         spinner.setVisibility(View.VISIBLE);
-
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -73,8 +64,7 @@ public class GoogleActivity extends MainActivity {
             public void run() {
                 spinner.setVisibility(View.INVISIBLE);
             }
-        }, 5000);
-
+        }, 3000);
 
         try {
             configGoogle();
@@ -83,6 +73,25 @@ public class GoogleActivity extends MainActivity {
             Log.e("GOOGLE ACTIVITY", e.toString());
             e.printStackTrace();
         }
+
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
+
+
+            }
+        });
+
+        displaysettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(android.provider.Settings.ACTION_DISPLAY_SETTINGS));
+
+            }
+        });
+
     }
 
     private void configGoogle(){
