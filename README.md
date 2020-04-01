@@ -3,9 +3,19 @@
 The app it's to be used to help the development / Quality Team to start a new ODM project(Tablet - Smartphone).
 Config device to start Google Tests. Features help to check all the features are correct.
 
-## compatibility 
+## Compatibility 
 
 Android 9
+
+To guarantee system permissions was necessary add device administrator:
+
+### Set:
+
+__$ adb shell dpm set-device-owner com.studio.nicedevice/.DeviceAdminReceiver__
+
+### Remove:
+
+__$ adb shell dpm remove-active-admin com.studio.nicedevice/.DeviceAdminReceiver__
 
 ## Features
 
