@@ -56,6 +56,6 @@ Save logs
 
 Diego Fraga
 
-diego.rfraga@gmail.com
+Email: diego.rfraga@gmail.com
 
 
